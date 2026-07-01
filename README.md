@@ -2,6 +2,7 @@
 
 This repository provides several new spiking neuron models in PyTorch, built to integrate smoothly with Norse, snnTorch and other libraries in the ecosystem.
 Additionally, it contains a weight initializer for spiking layers and data augmentation functions for event-based audio and video data.
+
 ---
 
 ## Repository Structure
