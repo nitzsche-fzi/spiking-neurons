@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evolved-spiking-neurons"
+version = "1.0.0"
+description = "Evolved Spiking Neurons project"
+keywords = ["TODO"]
+readme = "README.md"
+license = {text = "EUPL-1.2"}
+authors = [
+    {name = "Sven Nitzsche", email = "nitzsche@fzi.de"},
+    {name = "Andreas Faust"},
+]
+maintainers = [
+    {name = "Sven Nitzsche", email = "nitzsche@fzi.de"},
+]
+dependencies = [
+    "numpy",
+    "torch",
+]
+requires-python = ">=3.9"
+
+[tool.setuptools]
+package-dir = {"esn" = "src"}
+packages = [
+    "esn",
+    "esn.augmentations",
+    "esn.initializers",
+    "esn.neuron_classes",
+    "esn.neuron_classes.pmsn_clr",
+    "esn.neurons",
+    "esn.neurons.clr",
+    "esn.polynomial_compiler",
+    "esn.surrogate_gradient",
+]
+
+[project.optional-dependencies]
+examples = [
+    "lightning",
+    "matplotlib",
+    "norse",
+    "snntorch",
+    "tonic",
+    "torchvision",
+]
+
+[project.urls]
+homepage = "https://anonymous.4open.science/r/evolved-spiking-neurons/"
+repository = "https://anonymous.4open.science/r/evolved-spiking-neurons/"
