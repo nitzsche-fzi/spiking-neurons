@@ -6,3 +6,5 @@
 # Custom folders
 temp
 output
+.cache/
+.data/

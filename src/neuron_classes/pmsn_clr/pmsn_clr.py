@@ -64,9 +64,27 @@ class PMSN_CLR(BaseNeuronClass):
         Initialize the state of the neuron based on the shape.
         Resulting state should have shape [n_states, batch_size, n_neurons]
         """
-        return self.resting_state.view(self.n_states, 1, 1).expand(self.n_states, batch_size, n_neurons).clone()
+        return self.init_state_like(
+            torch.empty(
+                batch_size,
+                n_neurons,
+                device=self.resting_state.device,
+                dtype=self.resting_state.dtype,
+            )
+        )
 
-    def forward(self, x, state):
+    def init_state_like(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Initialize a state tensor with shape [n_states, *x.shape].
+        """
+        state_shape = (self.n_states, *x.shape)
+        view_shape = (self.n_states, *([1] * x.dim()))
+        return self.resting_state.view(view_shape).expand(state_shape).clone()
+
+    def forward(self, x, state=None):
+        if state is None:
+            state = self.init_state_like(x)
+            state = state.to(device=x.device, dtype=x.dtype)
         new_state = state + self.polynomial_fn(x, state) * self.state_delta
         spikes = self.threshold_fn(new_state[0] - self.threshold)
         reset = self.reset_fn(x, new_state)

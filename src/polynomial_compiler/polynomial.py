@@ -1,5 +1,5 @@
 import itertools
-from ..polynomial_compiler.simp import simplify, simplify_just_gather, is_float
+from ..polynomial_compiler.simp import simplify, simplify_just_gather
 
 def create_polynomials(coeffs, degree, pre_combinations=[]):
     # coeffs is a torch tensor of shape [n_polynomials, n_monomials]
