@@ -36,7 +36,7 @@ repo/
 1. Clone this repository:
 
 ```
-git clone https://anonymous.4open.science/r/evolved-spiking-neurons/
+git clone https://github.com/nitzsche-fzi/spiking-neurons
 cd evolved-spiking-neurons
 ```
 
